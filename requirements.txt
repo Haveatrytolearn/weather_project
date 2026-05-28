@@ -1,6 +1,2 @@
-Flask
-gunicorn
-Werkzeug
-Jinja2
-itsdangerous
-click
+Flask==2.3.4
+gunicorn==23.2.0
