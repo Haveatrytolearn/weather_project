@@ -1,34 +1,34 @@
 from weather import generate_daily_summary, load_data_from_csv
 
-# Загрузить данные из CSV
+# Load data from CSV
 data = load_data_from_csv('tests/data/example_one.csv')
 
-print("Загруженные данные:")
+print("Loaded data:")
 print(data)
 print("\n" + "="*60 + "\n")
 
-# Вызвать функцию
+# Call the function
 result = generate_daily_summary(data)
 
-print("Результат generate_daily_summary():")
+print("Result of generate_daily_summary():")
 print(result)
 
 print("\n" + "="*60 + "\n")
 
-# Проверить ожидаемый результат
+# Check expected output
 with open('tests/expected_output/example_one_daily_summary.txt', 'r') as f:
     expected = f.read()
 
-print("Ожидаемый результат:")
+print("Expected output:")
 print(expected)
 
 print("\n" + "="*60 + "\n")
 
-# Сравнить
+# Compare
 if result == expected:
-    print("✅ РЕЗУЛЬТАТ СОВПАДАЕТ!")
+    print("✅ RESULT MATCHES!")
 else:
-    print("❌ РЕЗУЛЬТАТ НЕ СОВПАДАЕТ!")
-    print("\nРазница:")
-    print(f"Получено ({len(result)} символов):\n{repr(result)}")
-    print(f"\nОжидается ({len(expected)} символов):\n{repr(expected)}")
+    print("❌ RESULT DOES NOT MATCH!")
+    print("\nDifference:")
+    print(f"Received ({len(result)} characters):\n{repr(result)}")
+    print(f"\nExpected ({len(expected)} characters):\n{repr(expected)}")

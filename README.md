@@ -1,150 +1,117 @@
 # 🌤️ Weather Project
 
-A Python weather data analysis project that processes CSV files and generates comprehensive weather summaries.
+A Python weather data analysis project that loads CSV files, converts temperatures to Celsius, and presents both a clean web interface and unit-tested backend logic.
 
-## Features
+## What’s included
 
-- ✅ Load weather data from CSV files
-- ✅ Calculate temperature statistics (min, max, averages)
-- ✅ Convert temperatures from Fahrenheit to Celsius
-- ✅ Format dates in a human-readable format
-- ✅ Generate overall and daily weather summaries
-- ✅ **Beautiful web interface for data visualization**
-- ✅ Comprehensive unit tests for all functions
+- ✅ Web application built with Flask
+- ✅ File upload and deletion support
+- ✅ Built-in sample CSV data in `tests/data/`
+- ✅ Summary and daily summary generation
+- ✅ Full unit test coverage for weather utilities
+- ✅ `uploaded_data/` folder for user uploads
 
-## Project Structure
+## Project structure
 
 ```
 .
-├── weather.py              # Core weather functions
-├── main.py                 # CLI interface for weather analysis
-├── app.py                  # Flask web application ⭐ NEW
-├── tests/                  # Unit tests
-│   ├── test_*.py          # Individual test files
-│   ├── data/              # Sample CSV weather data
-│   └── expected_output/   # Expected test outputs
-├── templates/             # HTML templates ⭐ NEW
-│   └── index.html         # Main web page
-└── README.md
+├── app.py                  # Flask web application entry point
+├── weather.py              # Core weather data processing functions
+├── main.py                 # CLI interface for the project
+├── requirements.txt        # Python dependencies
+├── .python-version         # Python version for deployment environments
+├── Procfile                # Heroku entry point
+├── templates/              # HTML templates for Flask
+│   └── index.html         # Main web UI
+├── tests/                  # Unit tests and sample data
+│   ├── data/              # Example CSV files
+│   └── expected_output/   # Expected outputs for tests
+└── uploaded_data/          # Uploaded CSV files stored locally
 ```
 
 ## Installation
 
-1. Make sure you have Python 3.7+ installed
-2. Navigate to the project directory
+1. Make sure you have Python 3.11 installed.
+2. Open a terminal in the project folder.
+3. Install dependencies:
 
-3. Install Flask (required for web interface):
-   ```bash
-   pip install flask
-   ```
+```bash
+python -m pip install -r requirements.txt
+```
 
-## 🚀 Running the Project
+## Run the web app
 
-### Option 1: Web Interface (Recommended for Presentations) ⭐
+The project is deployed and available at:
 
-Beautiful, interactive web interface:
+```text
+https://weather-python-project-15ced61538aa.herokuapp.com/
+```
+
+To run it locally, start the Flask application:
 
 ```bash
 python app.py
 ```
 
-Then open: `http://localhost:5000`
+Open your browser at:
 
-**Features:**
-- 🎨 Beautiful gradient UI with smooth animations
-- 📱 Responsive design (works on mobile too)
-- 📊 Select and analyze files with one click
-- 📈 View data organized in clear sections
-- ⚡ Real-time processing feedback
+```text
+http://localhost:5000
+```
 
-### Option 2: Command Line Interface
+### What you can do in the UI
 
-Interactive menu-based CLI:
+- Select one of the sample CSV files
+- Upload your own CSV file
+- View the generated overall summary
+- View the daily summary
+- Delete uploaded files
+
+## Run the CLI
+
+If you prefer terminal mode:
 
 ```bash
 python main.py
 ```
 
-### Option 3: Run Tests
+## Run tests
 
-Verify all functions work correctly:
-
-```bash
-python -m unittest tests/*.py
-```
-
-## Core Functions in `weather.py`
-
-### Temperature & Formatting
-- `convert_f_to_c()` - Fahrenheit to Celsius conversion
-- `format_temperature()` - Formats temperature with °C symbol
-
-### Data Processing
-- `load_data_from_csv()` - Reads CSV weather data
-- `calculate_mean()` - Computes average temperature
-
-### Date Handling
-- `convert_date()` - Converts ISO format to readable date (e.g., "Friday 02 July 2021")
-
-### Statistics
-- `find_min()` - Finds minimum temperature and its position
-- `find_max()` - Finds maximum temperature and its position
-
-### Summaries
-- `generate_summary()` - Overall weather summary (min, max, averages)
-- `generate_daily_summary()` - Per-day weather breakdown
-
-## Sample Data
-
-3 example CSV files included in `tests/data/`:
-- `example_one.csv` - 5 days (July 2021)
-- `example_two.csv` - 8 days (June 2020)  
-- `example_three.csv` - 8 days (Mixed values)
-
-## Example Output
-
-### General Summary
-```
-5 Day Overview
-  The lowest temperature will be 9.4°C, and will occur on Friday 02 July 2021.
-  The highest temperature will be 20.0°C, and will occur on Saturday 03 July 2021.
-  The average low this week is 12.2°C.
-  The average high this week is 17.8°C.
-```
-
-### Daily Summary
-```
----- Friday 02 July 2021 ----
-  Minimum Temperature: 9.4°C
-  Maximum Temperature: 19.4°C
-
----- Saturday 03 July 2021 ----
-  Minimum Temperature: 13.9°C
-  Maximum Temperature: 20.0°C
-```
-
-## Testing
+Execute all unit tests with:
 
 ```bash
-# Run all tests
 python -m unittest tests -v
-
-# Run specific test
-python -m unittest tests/test_convert_f_to_c.py
-
-# Test a single function
-python -m unittest tests.test_calculate_mean.CalculateMeanTests.test_calculate_mean
 ```
 
-## Tech Stack
+## About the backend
 
-- 🐍 Python 3.7+
-- 🌐 Flask (web framework)
-- 📊 CSV (data format)
-- ✅ unittest (testing)
+The `weather.py` module contains the core analysis logic:
 
-## For Presentations
+- `load_data_from_csv()` — loads CSV weather data
+- `convert_f_to_c()` — converts Fahrenheit to Celsius
+- `convert_date()` — formats ISO dates into readable text
+- `find_min()` / `find_max()` — finds temperature extremes
+- `generate_summary()` — builds overall summary text
+- `generate_daily_summary()` — builds per-day summary text
 
-1. **Impressive Demo:** `python app.py` → Open browser → Select file → ✨
-2. **Show Tests:** `python -m unittest tests -v` → All green ✅
-3. **Interactive CLI:** `python main.py` → Explain step-by-step
+## Sample data
+
+Sample CSV files live in `tests/data/`:
+
+- `example_one.csv`
+- `example_two.csv`
+- `example_three.csv`
+
+Uploaded files are stored locally in `uploaded_data/` while the app runs.
+
+## Deployment notes
+
+- `requirements.txt` includes `Flask==3.0.0` and `gunicorn==21.2.0`
+- `Procfile` is configured for Heroku: `web: gunicorn app:app`
+- `.python-version` is set to `3.11`
+
+## Notes
+
+- Use `uploaded_data/` only for temporary local uploads.
+- Sample files remain in `tests/data/` so the app can always analyze demo data.
+- The web UI is the recommended way to show the project to others.
